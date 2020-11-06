@@ -1,10 +1,12 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _config = require("../config");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -16,21 +18,21 @@ var BooksB2Page = function () {
   }
 
   _createClass(BooksB2Page, [{
-    key: 'verifyBookResetB2Download',
+    key: "verifyBookResetB2Download",
     value: async function verifyBookResetB2Download() {
-      await this.page.goto('https://staffroom.pl/podreczniki/password-reset-b2-2/');
+      await this.page.goto(_config.B2BooksUrl);
       await this.page.hover("div.extra > ul > li:nth-child(8)");
       await this.page.waitFor(200);
     }
   }, {
-    key: 'verifyExercisesBookResetB2Download',
+    key: "verifyExercisesBookResetB2Download",
     value: async function verifyExercisesBookResetB2Download() {
-      await this.page.goto('https://staffroom.pl/podreczniki/password-reset-b2-2/');
+      await this.page.goto(_config.B2BooksUrl);
       await this.page.hover("div.extra > ul > li:nth-child(9)");
       await this.page.waitFor(200);
     }
   }, {
-    key: 'downloadBtnB2IsVisible',
+    key: "downloadBtnB2IsVisible",
     value: async function downloadBtnB2IsVisible() {
       return await this.page.evaluate(function () {
         //@ts-ignore
@@ -38,7 +40,7 @@ var BooksB2Page = function () {
       });
     }
   }, {
-    key: 'downloadBtnB2ExercisesIsVisible',
+    key: "downloadBtnB2ExercisesIsVisible",
     value: async function downloadBtnB2ExercisesIsVisible() {
       return await this.page.evaluate(function () {
         //@ts-ignore
@@ -46,24 +48,24 @@ var BooksB2Page = function () {
       });
     }
   }, {
-    key: 'viewBtnB2Click',
+    key: "viewBtnB2Click",
     value: async function viewBtnB2Click() {
       await this.page.waitAndClick("div.extra > ul > li:nth-child(8) > div> div.buttons > a");
       await this.page.waitFor(2000);
     }
   }, {
-    key: 'viewBtnB2ExercisesClick',
+    key: "viewBtnB2ExercisesClick",
     value: async function viewBtnB2ExercisesClick() {
       await this.page.waitAndClick("div.extra > ul > li:nth-child(9) > div> div.buttons > a");
       await this.page.waitFor(2000);
     }
   }, {
-    key: 'viewIframeBookIsVisible',
+    key: "viewIframeBookIsVisible",
     value: async function viewIframeBookIsVisible() {
       await this.page.hover("div#popup");
     }
   }, {
-    key: 'getValueOnAvailableBtn',
+    key: "getValueOnAvailableBtn",
     value: async function getValueOnAvailableBtn() {
       return await this.page.evaluate(function () {
         //@ts-ignore
@@ -71,7 +73,7 @@ var BooksB2Page = function () {
       });
     }
   }, {
-    key: 'getValueOnAvailableExercisesBtn',
+    key: "getValueOnAvailableExercisesBtn",
     value: async function getValueOnAvailableExercisesBtn() {
       return await this.page.evaluate(function () {
         //@ts-ignore

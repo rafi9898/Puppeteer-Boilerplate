@@ -4,6 +4,8 @@ var _chai = require('chai');
 
 var _mochaSteps = require('mocha-steps');
 
+var _config = require('../config');
+
 var _builder = require('../builder');
 
 var _builder2 = _interopRequireDefault(_builder);
@@ -34,8 +36,7 @@ describe('StaffRoom Plus 1 Books test', function () {
   });
 
   (0, _mochaSteps.step)('Should login to staffroom account', async function () {
-    await loginPage.login("tesmac@wp.pl", "tm12345678!");
-    (0, _chai.expect)((await page.url())).to.be.equal("https://staffroom.pl/start/");
+    await loginPage.login(_config.userLogin, _config.userPassword);
   });
 
   (0, _mochaSteps.step)("Should verify download book", async function () {
@@ -43,7 +44,7 @@ describe('StaffRoom Plus 1 Books test', function () {
     var numberOfBtns = await booksPage.downloadBtnBookIsVisible();
     var valueOnAvailableBtn = await booksPage.getValueOnAvailableBookBtn();
     (0, _chai.expect)(numberOfBtns).to.be.equal(1);
-    (0, _chai.expect)(valueOnAvailableBtn).to.be.equal("Podgląd");
+    (0, _chai.expect)(valueOnAvailableBtn).to.be.equal(_config.viewPhrase);
   });
 
   (0, _mochaSteps.step)("Should verify view btn book", async function () {
@@ -52,12 +53,12 @@ describe('StaffRoom Plus 1 Books test', function () {
   });
 
   (0, _mochaSteps.step)("Should verify download exercises", async function () {
-    await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
+    await page.reloadPage();
     await booksPage.verifyExercisesResetB2Download();
     var numberOfBtns = await booksPage.downloadBtnExercisesIsVisible();
     var valueOnAvailableBtn = await booksPage.getValueOnAvailableExercisesBtn();
     (0, _chai.expect)(numberOfBtns).to.be.equal(1);
-    (0, _chai.expect)(valueOnAvailableBtn).to.be.equal("Podgląd");
+    (0, _chai.expect)(valueOnAvailableBtn).to.be.equal(_config.viewPhrase);
   });
 
   (0, _mochaSteps.step)("Should verify view btn exercises book", async function () {
