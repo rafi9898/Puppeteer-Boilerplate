@@ -1,5 +1,6 @@
 import { expect } from 'chai'
 import { step } from 'mocha-steps'
+import { userLogin, userPassword, viewPhrase } from '../config';
 
 import Page from '../builder'
 import LoginPage from '../pages/LoginPage'
@@ -21,8 +22,7 @@ describe('StaffRoom Plus 1 Books test', () => {
   })
 
   step('Should login to staffroom account', async () => {
-    await loginPage.login("tesmac@wp.pl", "tm12345678!")
-    expect(await page.url()).to.be.equal("https://staffroom.pl/start/")
+    await loginPage.login(userLogin, userPassword)
   })
 
   step("Should verify download book", async () => {
@@ -30,7 +30,7 @@ describe('StaffRoom Plus 1 Books test', () => {
     const numberOfBtns = await booksPage.downloadBtnBookIsVisible();
     const valueOnAvailableBtn = await booksPage.getValueOnAvailableBookBtn();
     expect(numberOfBtns).to.be.equal(1);
-    expect(valueOnAvailableBtn).to.be.equal("Podgląd")
+    expect(valueOnAvailableBtn).to.be.equal(viewPhrase)
   })
 
   step("Should verify view btn book", async () => {
@@ -40,12 +40,12 @@ describe('StaffRoom Plus 1 Books test', () => {
 
 
   step("Should verify download exercises", async () => {
-    await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
+    await page.reloadPage();
     await booksPage.verifyExercisesResetB2Download();
     const numberOfBtns = await booksPage.downloadBtnExercisesIsVisible();
     const valueOnAvailableBtn = await booksPage.getValueOnAvailableExercisesBtn();
     expect(numberOfBtns).to.be.equal(1);
-    expect(valueOnAvailableBtn).to.be.equal("Podgląd")
+    expect(valueOnAvailableBtn).to.be.equal(viewPhrase)
   })
 
   step("Should verify view btn exercises book", async () => {

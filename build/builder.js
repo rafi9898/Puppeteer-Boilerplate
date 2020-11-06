@@ -67,6 +67,11 @@ var Launcher = function () {
       await this.page.click(selector);
     }
   }, {
+    key: 'reloadPage',
+    value: async function reloadPage() {
+      await this.page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
+    }
+  }, {
     key: 'waitAndType',
     value: async function waitAndType(selector, text) {
       await this.page.waitForSelector(selector);

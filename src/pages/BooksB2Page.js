@@ -1,16 +1,18 @@
+import { B2BooksUrl } from '../config';
+
 export default class BooksB2Page {
     constructor(page) {
       this.page = page
     }
   
     async verifyBookResetB2Download() {
-        await this.page.goto('https://staffroom.pl/podreczniki/password-reset-b2-2/');
+        await this.page.goto(B2BooksUrl);
         await this.page.hover("div.extra > ul > li:nth-child(8)");
         await this.page.waitFor(200)
       }
 
       async verifyExercisesBookResetB2Download() {
-        await this.page.goto('https://staffroom.pl/podreczniki/password-reset-b2-2/');
+        await this.page.goto(B2BooksUrl);
         await this.page.hover("div.extra > ul > li:nth-child(9)");
         await this.page.waitFor(200)
       }

@@ -1,16 +1,18 @@
+import { gatewayPlusUrl } from '../config';
+
 export default class BooksPlus1Page {
     constructor(page) {
       this.page = page
     }
   
     async verifyBookResetDownload() {
-        await this.page.goto('https://staffroom.pl/podreczniki/gateway-plus-1/');
+        await this.page.goto(gatewayPlusUrl);
         await this.page.hover("div.extra > ul > li:nth-child(13)");
         await this.page.waitFor(200)
       }
 
       async verifyExercisesResetB2Download() {
-        await this.page.goto('https://staffroom.pl/podreczniki/gateway-plus-1/');
+        await this.page.goto(gatewayPlusUrl);
         await this.page.hover("div.extra > ul > li:nth-child(14)");
         await this.page.waitFor(200)
       }

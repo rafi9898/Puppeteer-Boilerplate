@@ -51,6 +51,10 @@ export default class Launcher {
     await this.page.click(selector)
   }
 
+  async reloadPage() {
+    await this.page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
+  }
+
   async waitAndType(selector, text) {
     await this.page.waitForSelector(selector)
     await this.page.type(selector, text)
