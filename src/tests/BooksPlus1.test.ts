@@ -7,14 +7,14 @@ import LoginPage from '../pages/LoginPage'
 import BooksPlus1Page from '../pages/BooksPlus1Page'
 
 describe('StaffRoom Plus 1 Books test', () => {
-  let page
-  let loginPage
-  let booksPage;
+  let page:any
+  let loginPage:LoginPage
+  let booksPage:BooksPlus1Page
 
   before(async () => {
     page = await Page.build('Desktop')
-    loginPage = await new LoginPage(page)
-    booksPage = await new BooksPlus1Page(page);
+    loginPage = new LoginPage(page)
+    booksPage = new BooksPlus1Page(page);
   })
 
   after(async () => {
@@ -27,8 +27,8 @@ describe('StaffRoom Plus 1 Books test', () => {
 
   step("Should verify download book", async () => {
     await booksPage.verifyBookResetDownload();
-    const numberOfBtns = await booksPage.downloadBtnBookIsVisible();
-    const valueOnAvailableBtn = await booksPage.getValueOnAvailableBookBtn();
+    const numberOfBtns:number = await booksPage.downloadBtnBookIsVisible();
+    const valueOnAvailableBtn:string = await booksPage.getValueOnAvailableBookBtn();
     expect(numberOfBtns).to.be.equal(1);
     expect(valueOnAvailableBtn).to.be.equal(viewPhrase)
   })
@@ -42,8 +42,8 @@ describe('StaffRoom Plus 1 Books test', () => {
   step("Should verify download exercises", async () => {
     await page.reloadPage();
     await booksPage.verifyExercisesResetB2Download();
-    const numberOfBtns = await booksPage.downloadBtnExercisesIsVisible();
-    const valueOnAvailableBtn = await booksPage.getValueOnAvailableExercisesBtn();
+    const numberOfBtns:number = await booksPage.downloadBtnExercisesIsVisible();
+    const valueOnAvailableBtn:string = await booksPage.getValueOnAvailableExercisesBtn();
     expect(numberOfBtns).to.be.equal(1);
     expect(valueOnAvailableBtn).to.be.equal(viewPhrase)
   })

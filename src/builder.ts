@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer'
 
 export default class Launcher {
+  private page;
   static async build(viewport) {
     const launchOptions = {
       headless: false,

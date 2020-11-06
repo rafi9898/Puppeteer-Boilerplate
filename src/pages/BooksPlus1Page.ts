@@ -1,6 +1,7 @@
 import { gatewayPlusUrl } from '../config';
 
 export default class BooksPlus1Page {
+  private page;
     constructor(page) {
       this.page = page
     }

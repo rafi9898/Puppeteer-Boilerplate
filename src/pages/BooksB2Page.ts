@@ -1,6 +1,7 @@
 import { B2BooksUrl } from '../config';
 
 export default class BooksB2Page {
+  private page;
     constructor(page) {
       this.page = page
     }
