@@ -19,7 +19,7 @@ export default class SearchPage {
     }
 
     async clickOnFirstResult() {
-      await this.page.waitAndClick("ol#b_results >li:nth-child(1) > div.b_title > h2");
+      await this.page.waitAndClick("li.b_algo:nth-child(1) > div.b_title > h2 > a");
     }
     
   }
