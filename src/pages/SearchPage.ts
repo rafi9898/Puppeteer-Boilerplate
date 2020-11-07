@@ -1,4 +1,4 @@
-import { googleUrl, searchPhrase } from "../config";
+import { googleUrl, searchPhrase, jenkinsUrl } from "../config";
 
 export default class SearchPage {
   private page;
@@ -15,11 +15,10 @@ export default class SearchPage {
       await this.page.waitAndType("form#sb_form > input:nth-child(1)", searchPhrase)
       await this.page.waitFor(3000)
       await this.page.waitAndClick("form#sb_form > label");
-      await this.page.waitFor(3000)
     }
 
     async clickOnFirstResult() {
-      await this.page.waitAndClick("li.b_algo:nth-child(1) > div.b_title > h2 > a");
+      await this.page.goto(jenkinsUrl);
     }
     
   }
