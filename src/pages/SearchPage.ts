@@ -15,10 +15,11 @@ export default class SearchPage {
       await this.page.waitAndType("form#sb_form > input:nth-child(1)", searchPhrase)
       await this.page.waitFor(3000)
       await this.page.waitAndClick("form#sb_form > label");
+      await this.page.waitFor(3000)
     }
 
     async clickOnFirstResult() {
-      await this.page.waitAndClick("ol#b_results >li:nth-child(1) > div.b_title >h2");
+      await this.page.waitAndClick("ol#b_results >li:nth-child(1) > div.b_title > h2");
     }
     
   }
